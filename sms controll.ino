@@ -55,7 +55,7 @@ void setup() {
 
   lcd.clear();
   lcd.setCursor(0, 0);
-  lcd.print("Light  Kil  Moto");
+  lcd.print("Light  Fan Motor");
   lcd.setCursor(0, 1);
   lcd.print("OFF    OFF  OFF");
 }
@@ -65,7 +65,7 @@ void loop() {
 
 
   lcd.setCursor(0, 0);
-  lcd.print("Light  Kil  Moto");
+  lcd.print("Light  Fan Motor");
   //lcd.setCursor(0, 1);
   //lcd.print("OFF    OFF  OFF");
   
@@ -137,14 +137,14 @@ delay(10);
      sendMessage1("Light is OFF");
     
 
-  } else if (incomingData.indexOf("kil on") >= 0) {
+  } else if (incomingData.indexOf("fan on") >= 0) {
     digitalWrite(fanOut, HIGH);
     lcd.setCursor(8, 1);
     lcd.print("ON   ");
     sendMessage("Insect Killer is ON");
     sendMessage1("Insect Killer is ON");
 
-  } else if (incomingData.indexOf("kil off") >= 0) {
+  } else if (incomingData.indexOf("fan off") >= 0) {
     digitalWrite(fanOut, LOW);
     lcd.setCursor(8, 1);
     lcd.print("OFF  ");
@@ -208,7 +208,7 @@ void receiveSMS() {
 void sendMessage(String msg) {
   gsm.println("AT+CMGF=1");    // Set the GSM Module in Text Mode
   delay(1000);
-  gsm.println("AT+CMGS=\"+8801920639338\""); // Replace it with your mobile number
+  gsm.println("AT+CMGS=\"+8801650093726\""); // Replace it with your mobile number
   delay(1000);
   gsm.println(msg);       // The SMS text you want to send
   delay(1000);
@@ -222,7 +222,7 @@ void sendMessage(String msg) {
 void sendMessage1(String msg) {
   gsm.println("AT+CMGF=1");    // Set the GSM Module in Text Mode
   delay(1000);
-  gsm.println("AT+CMGS=\"+8801920639338\""); // Replace it with your mobile number
+  gsm.println("AT+CMGS=\"+8801650093726\""); // Replace it with your mobile number
   delay(1000);
   gsm.println(msg);       // The SMS text you want to send
   delay(1000);
