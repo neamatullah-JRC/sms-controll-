@@ -11,31 +11,27 @@ unsigned short ledPin = 8;
 unsigned short lightOut = 11; // Initialized a pin for relay module
 unsigned short fanOut = 12;
 unsigned short tvOut = 13;
-//int sensor = A5;
-//int sensorState = 0;
 
 void setup() {
   Serial.begin(9600); // baudrate for serial monitor
   gsm.begin(9600);    // baudrate for GSM shield
 
-  // reserve 200 bytes for the incomingData:
   incomingData.reserve(200);
 
-  // set up the LCD's number of columns and rows:
   lcd.begin(16, 2);
 
-  // Config pin as output pin
+  
    pinMode(ledPin, OUTPUT);
   pinMode(lightOut, OUTPUT);
   pinMode(fanOut, OUTPUT);
   pinMode(tvOut, OUTPUT);
-//pinMode(sensor, INPUT);
-  // Make pin initailly low
+
+ 
   digitalWrite(lightOut, LOW);
   digitalWrite(fanOut, LOW);
   digitalWrite(tvOut, LOW);
 
-  // Print a message to the LCD.
+  
   lcd.print("GSM Control Home");
   lcd.setCursor(0, 1);
   lcd.print("   Automation   ");
@@ -45,11 +41,11 @@ void setup() {
   lcd.print("System Ready");
   delay(1000);
 
-  // set the GSM Module in Text Mode
+ 
   gsm.println("AT+CMGF=1");
   delay(200);
 
-  // set gsm module to receive sms & show the output on serial
+ 
   gsm.println("AT+CNMI=2,2,0,0,0");
   delay(200);
 
@@ -61,7 +57,7 @@ void setup() {
 }
 
 void loop() {
-  // sendMessage("gsm test");
+  
 
 
   lcd.setCursor(0, 0);
